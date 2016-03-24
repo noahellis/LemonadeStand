@@ -9,7 +9,7 @@ namespace LemonadeStand
     class Weather
     {
 
-        int weatherNumber;
+        public int weatherNumber;
 
 
 
