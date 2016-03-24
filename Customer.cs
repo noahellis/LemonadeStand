@@ -11,121 +11,122 @@ namespace LemonadeStand
         public bool willBuy;
         public int potentialCustomer;
         Weather customerNumber = new Weather();
-
+        public List<int> dailyCustomers = new List<int>();
         public void DetermineWillBuyWeather()
         {
             Random custBuy = new Random();
-            int weatherBuy = custBuy.Next(0, 100);
 
-            //need to create list of customers based on number generated in GetNumberOfPotentialCustomers function !!!!!!!!  Then create foreach loop for that List!!!!!!!!!!!!!!!!
-            if (customerNumber.weatherNumber == 1)
+            
+            for (int dayCust = 0; dayCust <= potentialCustomer; dayCust++)
             {
-                if (weatherBuy < 90)
-                {
-                    willBuy = true;
-                }
+                int weatherBuy = custBuy.Next(0, 100);
 
-                else
-                {
-                    willBuy = false;
-                }
-            }
 
-            if (customerNumber.weatherNumber ==2)
-            {
-                if (weatherBuy <70)
+                if (customerNumber.weatherNumber == 1)
                 {
-                    willBuy = true;
+                    if (weatherBuy < 90)
+                    {
+                        willBuy = true;
+                    }
+                    else
+                    {
+                        willBuy = false;
+                    }
                 }
 
-                else
+                if (customerNumber.weatherNumber == 2)
                 {
-                    willBuy = false;
+                    if (weatherBuy < 70)
+                    {
+                        willBuy = true;
+                    }
+                    else
+                    {
+                        willBuy = false;
+                    }
                 }
-            }
 
-            if (customerNumber.weatherNumber == 3)
-            {
-                if (weatherBuy < 50)
+                if (customerNumber.weatherNumber == 3)
                 {
-                    willBuy = true;
+                    if (weatherBuy < 50)
+                    {
+                        willBuy = true;
+                    }
+                    else
+                    {
+                        willBuy = false;
+                    }
                 }
-                else
+
+                if (customerNumber.weatherNumber == 4)
                 {
-                    willBuy = false;
+                    if (weatherBuy < 60)
+                    {
+                        willBuy = true;
+                    }
+                    else
+                    {
+                        willBuy = false;
+                    }
                 }
-            }
-            if (customerNumber.weatherNumber == 4)
-            {
-                if (weatherBuy < 60)
+
+                if (customerNumber.weatherNumber == 5)
                 {
-                    willBuy = true;
+                    if (weatherBuy < 10)
+                    {
+                        willBuy = true;
+                    }
+                    else
+                    {
+                        willBuy = false;
+                    }
                 }
-                else
+
+                while (willBuy)
                 {
-                    willBuy = false;
+                    // DetermineWillBuyPrice();
+                    Console.WriteLine("Bought Lemonade");
+                    break;
                 }
-            }
-            if (customerNumber.weatherNumber == 5)
-            {
-                if (weatherBuy < 10)
+
+                while (!willBuy)
                 {
-                    willBuy = true;
+                    Console.WriteLine("Didn't buy Lemonade");
+                    break;
                 }
-                else
-                {
-                    willBuy = false;
-                }
-            }
-            while (willBuy)
-            {
-                Console.WriteLine("Bought Lemonade");
-            }
-            while (!willBuy)
-            {
-                Console.WriteLine("Didn't buy Lemonade");
             }
         }
 
         public void DetermineWillBuyPrice()
         {
-
         }
 
         public void GetNumberOfPotentialCustomers()
         {
-            
             Random custNum = new Random();
-
-            
             customerNumber.DetermineWeather();
-
-            
             if (customerNumber.weatherNumber == 1)
             {
-                potentialCustomer = custNum.Next(30, 60);
-                
+                potentialCustomer = custNum.Next(30, 60);                
             }
-
             else if (customerNumber.weatherNumber == 2)
             {
                 potentialCustomer = custNum.Next(20, 50);
             }
-
             else if (customerNumber.weatherNumber == 3)
             {
                 potentialCustomer = custNum.Next(20, 30);
             }
-
             else if (customerNumber.weatherNumber == 4)
             {
                 potentialCustomer = custNum.Next(20, 40);
             }
-
             else if (customerNumber.weatherNumber == 5)
             {
                 potentialCustomer = custNum.Next(10, 30);
             }
+            dailyCustomers.Add(potentialCustomer);
+            
 
             Console.WriteLine(potentialCustomer);
             DetermineWillBuyWeather();
