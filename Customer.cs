@@ -9,28 +9,33 @@ namespace LemonadeStand
     class Customer
     {
         public bool willBuy;
+        public bool willApproach;
         public int potentialCustomer;
         Weather customerNumber = new Weather();
+        Game getChargedPrice = new Game();
         public List<int> dailyCustomers = new List<int>();
+        public List<int> purchasingCustomers = new List<int>();
+
         public void DetermineWillBuyWeather()
         {
-            Random custBuy = new Random();
+            Random custApproach = new Random();
 
             
             for (int dayCust = 0; dayCust <= potentialCustomer; dayCust++)
             {
-                int weatherBuy = custBuy.Next(0, 100);
+                int weatherBuy = custApproach.Next(0, 100);
 
 
                 if (customerNumber.weatherNumber == 1)
                 {
                     if (weatherBuy < 90)
                     {
-                        willBuy = true;
+                        willApproach = true;
+                        DetermineWillBuyPrice(getChargedPrice);
                     }
                     else
                     {
-                        willBuy = false;
+                        willApproach = false;
                     }
                 }
 
@@ -38,11 +43,12 @@ namespace LemonadeStand
                 {
                     if (weatherBuy < 70)
                     {
-                        willBuy = true;
+                        willApproach = true;
+                        DetermineWillBuyPrice(getChargedPrice);
                     }
                     else
                     {
-                        willBuy = false;
+                        willApproach = false;
                     }
                 }
 
@@ -50,11 +56,12 @@ namespace LemonadeStand
                 {
                     if (weatherBuy < 50)
                     {
-                        willBuy = true;
+                        willApproach = true;
+                        DetermineWillBuyPrice(getChargedPrice);
                     }
                     else
                     {
-                        willBuy = false;
+                        willApproach = false;
                     }
                 }
 
@@ -62,11 +69,12 @@ namespace LemonadeStand
                 {
                     if (weatherBuy < 60)
                     {
-                        willBuy = true;
+                        willApproach = true;
+                        DetermineWillBuyPrice(getChargedPrice);
                     }
                     else
                     {
-                        willBuy = false;
+                        willApproach = false;
                     }
                 }
 
@@ -74,31 +82,127 @@ namespace LemonadeStand
                 {
                     if (weatherBuy < 10)
                     {
-                        willBuy = true;
+                        willApproach = true;
+                        DetermineWillBuyPrice(getChargedPrice);
                     }
                     else
                     {
-                        willBuy = false;
+                        willApproach = false;
                     }
                 }
 
-                while (willBuy)
-                {
-                    // DetermineWillBuyPrice();
-                    Console.WriteLine("Bought Lemonade");
+                while (willApproach)
+                {                    
+                    purchasingCustomers.Add(1);
+                   // Console.WriteLine("approached stand " + purchasingCustomers.Count);
+                    
                     break;
                 }
 
-                while (!willBuy)
+                while (!willApproach)
                 {
-                    Console.WriteLine("Didn't buy Lemonade");
+                    Console.WriteLine("Didn't approach stand");
                     break;
                 }
             }
         }
 
-        public void DetermineWillBuyPrice()
+        public void DetermineWillBuyPrice(Game game)
         {
+            
+            Random custBuy = new Random();
+            foreach (int buyer in purchasingCustomers)
+            {
+                int priceBuy = custBuy.Next(0, 100);
+
+                if (game.chargePrice > 0 && game.chargePrice <= .2)
+                {
+                    willBuy = true;
+                    Console.WriteLine("bought lemonade");
+                    break;
+                }
+
+
+
+                if (game.chargePrice > .2 && game.chargePrice < .5)
+                {
+                    if (priceBuy < 80)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+                if (game.chargePrice > .5 && game.chargePrice < .75)
+                {
+                    if (priceBuy < 70)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+                if (game.chargePrice > .75 && game.chargePrice < 1)
+                {
+                    if (priceBuy < 60)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+                if (game.chargePrice > 1 && game.chargePrice < 1.25)
+                {
+                    if(priceBuy < 40)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+                if (game.chargePrice >1.25 && game.chargePrice < 1.5)
+                {
+                    if(priceBuy < 30)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+                if (game.chargePrice > 1.5)
+                {
+                    if (priceBuy < 10)
+                    {
+                        willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+            }
         }
 
         public void GetNumberOfPotentialCustomers()
@@ -130,6 +234,14 @@ namespace LemonadeStand
 
             Console.WriteLine(potentialCustomer);
             DetermineWillBuyWeather();
+        }
+
+        public void Start()
+        {
+            getChargedPrice.inputPrice();
+            GetNumberOfPotentialCustomers();
+            Console.WriteLine(getChargedPrice.chargePrice);
+            Console.ReadLine();
         }
     }
 }

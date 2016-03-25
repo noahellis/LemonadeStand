@@ -10,8 +10,9 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Customer testCust = new Customer();
-            testCust.GetNumberOfPotentialCustomers();
+            Customer customer = new Customer();
+            customer.Start();
+            
         }
     }
 }

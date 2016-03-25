@@ -8,10 +8,11 @@ namespace LemonadeStand
 {
     class Player
     {
-        public string Name; 
-        public Player(string name, int money=20)
+        public string Name = Console.ReadLine(); 
+        public Player(string name, double money)
         {
             name = Name;
+            money = 20;
         }
         public void GetUserInfo()
         {
