@@ -10,8 +10,11 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Customer customer = new Customer();
-            customer.Start();
+            Store testStore = new Store();
+            testStore.BuySugar();
+            testStore.BuyLemons();
+            testStore.BuyIce();
+            testStore.BuyCups();
             
         }
     }
