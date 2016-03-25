@@ -39,7 +39,7 @@ namespace LemonadeStand
             chargePrice = double.Parse(Console.ReadLine());
             if (chargePrice <= 0.009)
             {
-                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount over .01");
+                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount equal to or over .01");
                 inputPrice();
             }
 

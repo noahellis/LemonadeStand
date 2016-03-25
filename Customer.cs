@@ -11,6 +11,7 @@ namespace LemonadeStand
         public bool willBuy;
         public bool willApproach;
         public int potentialCustomer;
+        public int approachingCustomers; 
         Weather customerNumber = new Weather();
         Game getChargedPrice = new Game();
         public List<int> dailyCustomers = new List<int>();
@@ -31,7 +32,7 @@ namespace LemonadeStand
                     if (weatherBuy < 90)
                     {
                         willApproach = true;
-                        DetermineWillBuyPrice(getChargedPrice);
+                        purchasingCustomers.Add(1);
                     }
                     else
                     {
@@ -44,7 +45,7 @@ namespace LemonadeStand
                     if (weatherBuy < 70)
                     {
                         willApproach = true;
-                        DetermineWillBuyPrice(getChargedPrice);
+                        purchasingCustomers.Add(1);
                     }
                     else
                     {
@@ -57,7 +58,7 @@ namespace LemonadeStand
                     if (weatherBuy < 50)
                     {
                         willApproach = true;
-                        DetermineWillBuyPrice(getChargedPrice);
+                        purchasingCustomers.Add(1);
                     }
                     else
                     {
@@ -70,7 +71,7 @@ namespace LemonadeStand
                     if (weatherBuy < 60)
                     {
                         willApproach = true;
-                        DetermineWillBuyPrice(getChargedPrice);
+                        purchasingCustomers.Add(1);
                     }
                     else
                     {
@@ -83,28 +84,17 @@ namespace LemonadeStand
                     if (weatherBuy < 10)
                     {
                         willApproach = true;
-                        DetermineWillBuyPrice(getChargedPrice);
+                        purchasingCustomers.Add(1);
                     }
                     else
                     {
                         willApproach = false;
                     }
-                }
-
-                while (willApproach)
-                {                    
-                    purchasingCustomers.Add(1);
-                   // Console.WriteLine("approached stand " + purchasingCustomers.Count);
-                    
-                    break;
-                }
-
-                while (!willApproach)
-                {
-                    Console.WriteLine("Didn't approach stand");
-                    break;
-                }
+                }           
+                   approachingCustomers = purchasingCustomers.Count;
+                            
             }
+            DetermineWillBuyPrice(getChargedPrice); 
         }
 
         public void DetermineWillBuyPrice(Game game)
@@ -115,87 +105,87 @@ namespace LemonadeStand
             {
                 int priceBuy = custBuy.Next(0, 100);
 
-                if (game.chargePrice > 0 && game.chargePrice <= .2)
+                if (getChargedPrice.chargePrice > 0 && getChargedPrice.chargePrice <= .2)
                 {
                     willBuy = true;
                     Console.WriteLine("bought lemonade");
-                    break;
+                    
                 }
 
 
 
-                if (game.chargePrice > .2 && game.chargePrice < .5)
+                if (getChargedPrice.chargePrice > .2 && getChargedPrice.chargePrice <= .5)
                 {
                     if (priceBuy < 80)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
                         Console.WriteLine("Approached stand, didn't buy");
                     }
                 }
-                if (game.chargePrice > .5 && game.chargePrice < .75)
+                if (getChargedPrice.chargePrice > .5 && getChargedPrice.chargePrice <= .75)
                 {
                     if (priceBuy < 70)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
                         Console.WriteLine("Approached stand, didn't buy");
                     }
                 }
-                if (game.chargePrice > .75 && game.chargePrice < 1)
+                if (getChargedPrice.chargePrice > .75 && getChargedPrice.chargePrice <= 1)
                 {
                     if (priceBuy < 60)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
                         Console.WriteLine("Approached stand, didn't buy");
                     }
                 }
-                if (game.chargePrice > 1 && game.chargePrice < 1.25)
+                if (getChargedPrice.chargePrice > 1 && getChargedPrice.chargePrice <= 1.25)
                 {
                     if(priceBuy < 40)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
                         Console.WriteLine("Approached stand, didn't buy");
                     }
                 }
-                if (game.chargePrice >1.25 && game.chargePrice < 1.5)
+                if (getChargedPrice.chargePrice >1.25 && getChargedPrice.chargePrice <= 1.5)
                 {
                     if(priceBuy < 30)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
                         Console.WriteLine("Approached stand, didn't buy");
                     }
                 }
-                if (game.chargePrice > 1.5)
+                if (getChargedPrice.chargePrice > 1.5)
                 {
                     if (priceBuy < 10)
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        break;
+                        
                     }
                     else
                     {
