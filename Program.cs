@@ -11,11 +11,11 @@ namespace LemonadeStand
         static void Main(string[] args)
         {
             Store testStore = new Store();
-            testStore.BuySugar();
+            
             testStore.BuyLemons();
             testStore.BuyIce();
             testStore.BuyCups();
-            
+            testStore.BuySugar();
         }
     }
 }

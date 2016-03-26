@@ -20,109 +20,152 @@ namespace LemonadeStand
         public string yesNo;
         
         Player playerInfo = new Player();
-        //give option to buy any number at a set price
-        //subtract purchases from current cash
+        
+        
         //print inventory before purchasing
-        //show remaining cash
-        //don't allow purchase if not enough cash
+        
+        
         public void BuyLemons()
         {
-            Console.WriteLine("How many Lemons would you like to buy?");
-            int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter yes if you would like to purchase " + choice + " Lemons for " + (choice * .20) + " or no to try again.");
-            yesNo = Console.ReadLine();
-            switch (yesNo)
+            Console.WriteLine("How many Lemons would you like to buy? Lemons are $0.20 each");
+            int choice = int.Parse(Console.ReadLine());            
+            if (playerInfo.money - (choice * .2)< 0)
             {
-                case "yes":
-                    lemons = remainingLemons + choice;
-                    playerInfo.money = playerInfo.money - (choice * .2);
-                    Console.WriteLine("Purchase completed");
-                    break;
-
-                case "no":
-                    BuyLemons();
-                    break;
-                default:
-                    Console.WriteLine("Your entry is invalid. Please try again");
-                    BuyLemons();
-                    break;
+                Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                BuyLemons();
             }
+            else
+            {
+                Console.WriteLine("Enter 'yes' if you would like to purchase {0} Lemons for {1:C2} or 'no' to try again.", choice, choice * .2);
+                yesNo = Console.ReadLine();
+                switch (yesNo)
+                {
+                    case "yes":
+                        lemons = remainingLemons + choice;
+                        playerInfo.money = playerInfo.money - (choice * .2);
+                        Console.WriteLine("Purchase completed!");
+                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        break;
+
+                    case "no":
+                        BuyLemons();
+                        break;
+                    default:
+                        Console.WriteLine("Your entry is invalid. Please try again");
+                        BuyLemons();
+                        break;
+                }
+            }
+            
             
         }
 
         public void BuyCups()
         {
-            Console.WriteLine("How many Cups would you like to buy?");
+            Console.WriteLine("How many Cups would you like to buy? Cups are $0.10 each");
             int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter yes if you would like to purchase " + choice + " Cups for " + (choice * .10) + " or no to try again.");
-            yesNo = Console.ReadLine();
-            switch (yesNo)
+            if (playerInfo.money - (choice * .1) < 0)
             {
-                case "yes":
-                    cups = remainingCups + choice;
-                    playerInfo.money = playerInfo.money - (choice * .1);
-                    Console.WriteLine("Purchase completed");
-                    break;
-
-                case "no":
-                    BuyCups();
-                    break;
-                default:
-                    Console.WriteLine("Your entry is invalid. Please try again");
-                    BuyCups();
-                    break;
+                Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                BuyCups();
             }
+            else
+            {
+                Console.WriteLine("Enter 'yes' if you would like to purchase {0} Cups for {1:C2} or 'no' to try again.", choice, choice * .1);
+                yesNo = Console.ReadLine();
+                switch (yesNo)
+                {
+                    case "yes":
+                        lemons = remainingLemons + choice;
+                        playerInfo.money = playerInfo.money - (choice * .1);
+                        Console.WriteLine("Purchase completed!");
+                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        break;
+
+                    case "no":
+                        BuyCups();
+                        break;
+                    default:
+                        Console.WriteLine("Your entry is invalid. Please try again");
+                        BuyCups();
+                        break;
+                }
+            }
+
+
         }
 
         public void BuyIce()
         {
-            Console.WriteLine("How many cups of Ice would you like to buy?");
+            Console.WriteLine("How many Cups of Ice would you like to buy? Cups of Ice are $0.10 each");
             int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter yes if you would like to purchase " + choice + " cups of Ice for " + (choice * .10) + " or no to try again.");
-            yesNo = Console.ReadLine();
-            switch (yesNo)
+            if (playerInfo.money - (choice * .1) < 0)
             {
-                case "yes":
-                    ice = remainingIce + choice;
-                    playerInfo.money = playerInfo.money - (choice * .1);
-                    Console.WriteLine("Purchase completed");
-                    break;
-
-                case "no":
-                    BuyIce();
-                    break;
-                default:
-                    Console.WriteLine("Your entry is invalid. Please try again");
-                    BuyIce();
-                    break;
+                Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                BuyIce();
             }
+            else
+            {
+                Console.WriteLine("Enter 'yes' if you would like to purchase {0} Cups of Ice for {1:C2} or 'no' to try again.", choice, choice * .1);
+                yesNo = Console.ReadLine();
+                switch (yesNo)
+                {
+                    case "yes":
+                        lemons = remainingLemons + choice;
+                        playerInfo.money = playerInfo.money - (choice * .1);
+                        Console.WriteLine("Purchase completed!");
+                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        break;
+
+                    case "no":
+                        BuyIce();
+                        break;
+                    default:
+                        Console.WriteLine("Your entry is invalid. Please try again");
+                        BuyIce();
+                        break;
+                }
+            }
+
+
         }
 
         public void BuySugar()
         {
-            Console.WriteLine("How much Sugar would you like to buy?");
+            Console.WriteLine("How many servings of Sugar would you like to buy? Servings of Sugar are $0.08 each");
             int choice = int.Parse(Console.ReadLine());
-            Console.WriteLine("Enter yes if you would like to purchase " + choice + " servings of Sugar for " + (choice * .10) + " or no to try again.");
-            yesNo = Console.ReadLine();
-            switch (yesNo)
+            if (playerInfo.money - (choice * .08) < 0)
             {
-                case "yes":
-                    sugar = remainingSugar + choice;
-                    playerInfo.money = playerInfo.money - (choice * .08);
-                    Console.WriteLine("Purchase completed");
-                    break;
-
-                case "no":
-                    BuySugar();
-                    break;
-                default:
-                    Console.WriteLine("Your entry is invalid. Please try again");
-                    BuySugar();
-                    break;
+                Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                BuySugar();
             }
+            else
+            {
+                Console.WriteLine("Enter 'yes' if you would like to purchase {0} Servings of Sugar for {1:C2} or 'no' to try again.", choice, choice * .08);
+                yesNo = Console.ReadLine();
+                switch (yesNo)
+                {
+                    case "yes":
+                        lemons = remainingLemons + choice;
+                        playerInfo.money = playerInfo.money - (choice * .08);
+                        Console.WriteLine("Purchase completed!");
+                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        break;
+
+                    case "no":
+                        BuySugar();
+                        break;
+                    default:
+                        Console.WriteLine("Your entry is invalid. Please try again");
+                        BuySugar();
+                        break;
+                }
+            }
+
+
         }
 
-       
+
         public void CheckInventory()
         {
             //will check after each day, 
