@@ -9,29 +9,24 @@ namespace LemonadeStand
     class Game
     {
         public  double chargePrice;
-        Weather dailyWeather = new Weather();
+        //Weather dailyWeather = new Weather();
+        Store getStoreInfo = new Store();
 
 
 
         public void ShowProfit()
         {
+            
             //income - expenses 
         }
 
-        public void PresentDailyWeather()
-        {
-            //add forecast text (maybe a picture?)
-            dailyWeather.DetermineWeather();
+        
 
-            Console.WriteLine("Today's weather forecast: " );
+        //public void MakeLemonade()
+        //{
             
-        }
-
-        public void LemonadeRecipe()
-        {
-            //pitcher = 6 cups
-            //may just make user able to make as many cups as they have ingredients for, kinda hate premake the pitcher thing
-        }
+            
+        //}
 
         public double inputPrice()
         {
@@ -39,7 +34,7 @@ namespace LemonadeStand
             chargePrice = double.Parse(Console.ReadLine());
             if (chargePrice <= 0.009)
             {
-                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount equal to or over .01");
+                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount equal to or over $0.01");
                 inputPrice();
             }
 

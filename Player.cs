@@ -10,6 +10,7 @@ namespace LemonadeStand
     {
         public string Name = Console.ReadLine();
         public double money = 20;
+        
         public Player()
         {
             
@@ -20,7 +21,7 @@ namespace LemonadeStand
             Name = Console.ReadLine();
         }
 
-        public void TrackUserMoney()
+        public void TrackInventory()
         {
 
         }

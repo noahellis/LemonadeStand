@@ -42,8 +42,34 @@ namespace LemonadeStand
             {
                 weatherNumber = 5;
             }
-            Console.WriteLine(weatherNumber);
+            
             return weatherNumber;
-        }       
+        }
+        public void PresentDailyWeather()
+        {
+            //add forecast text (maybe a picture?)
+
+
+            switch (weatherNumber)
+            {
+                case 1:
+                    Console.WriteLine("Today's weather forecast is Sunny and Warm!!");
+                    break;
+                case 2:
+                    Console.WriteLine("Today's weather forecast is Sunny and Cool!!");
+                    break;
+                case 3:
+                    Console.WriteLine("Today's weather forecast is Rainy and Cool!!");
+                    break;
+                case 4:
+                    Console.WriteLine("Today's weather forecast is Rainy and Warm!!");
+                    break;
+                case 5:
+                    Console.WriteLine("Today's weather forecast is Snowy!!");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

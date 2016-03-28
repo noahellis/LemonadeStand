@@ -14,8 +14,10 @@ namespace LemonadeStand
         public int approachingCustomers; 
         Weather customerNumber = new Weather();
         Game getChargedPrice = new Game();
+        LemonadeSales inventory = new LemonadeSales();
         public List<int> dailyCustomers = new List<int>();
         public List<int> purchasingCustomers = new List<int>();
+        public List<bool> customersThatBought = new List<bool>();
 
         public void DetermineWillBuyWeather()
         {
@@ -109,6 +111,8 @@ namespace LemonadeStand
                 {
                     willBuy = true;
                     Console.WriteLine("bought lemonade");
+                    // customersThatBought.Add(true);
+                    inventory.SubtractIngredients();
                     
                 }
 
@@ -120,7 +124,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        // customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {
@@ -133,7 +138,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        // customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {
@@ -146,7 +152,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        // customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {
@@ -159,7 +166,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        //  customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {
@@ -172,7 +180,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        //  customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {
@@ -185,7 +194,8 @@ namespace LemonadeStand
                     {
                         willBuy = true;
                         Console.WriteLine("bought lemonade");
-                        
+                        //customersThatBought.Add(true);
+                        inventory.SubtractIngredients();
                     }
                     else
                     {

@@ -10,12 +10,8 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
-            Store testStore = new Store();
-            
-            testStore.BuyLemons();
-            testStore.BuyIce();
-            testStore.BuyCups();
-            testStore.BuySugar();
+            Day testDay = new Day();
+            testDay.StartDay();
         }
     }
 }
