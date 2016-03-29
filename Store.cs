@@ -11,8 +11,7 @@ namespace LemonadeStand
         public string yesNo;
         public double chargePrice;
         public double remainingMoney;
-      
-        Inventory inventory = new Inventory();        
+        Inventory inventory = new Inventory();
         Weather weather = new Weather();
         public double inputPrice()
         {
@@ -175,19 +174,31 @@ namespace LemonadeStand
                 int priceBuy = custBuy.Next(0, 100);
                 if (chargePrice > 0 && chargePrice <= .2)
                 {
-                    weather.willBuy = true;
-                    Console.WriteLine("bought lemonade");
-                    inventory.SubtractInventory();
+                    if (inventory.enoughInventory == true)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                        break;
+                    
                 }
 
                 if (chargePrice > .2 && chargePrice <= .5)
                 {
                     if (priceBuy < 80)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -199,10 +210,15 @@ namespace LemonadeStand
                 {
                     if (priceBuy < 70)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -214,10 +230,15 @@ namespace LemonadeStand
                 {
                     if (priceBuy < 60)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -229,10 +250,15 @@ namespace LemonadeStand
                 {
                     if (priceBuy < 40)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -244,10 +270,15 @@ namespace LemonadeStand
                 {
                     if (priceBuy < 30)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -259,10 +290,15 @@ namespace LemonadeStand
                 {
                     if (priceBuy < 10)
                     {
-                        weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
-                        inventory.SubtractInventory();
-                        inventory.money = inventory.money + chargePrice;
+                        if (inventory.CheckInventory())
+                        {
+                            weather.willBuy = true;
+                            Console.WriteLine("bought lemonade");
+                            inventory.SubtractInventory();
+                            inventory.money = inventory.money + chargePrice;
+                        }
+                        else
+                            break;
                     }
                     else
                     {
@@ -277,7 +313,6 @@ namespace LemonadeStand
             remainingMoney = inventory.money;
             Console.WriteLine("You have {0:C2} remaining", remainingMoney);
             return remainingMoney;
-           
         }
 
         public void GetWeather()

@@ -173,7 +173,5 @@ namespace LemonadeStand
                 dailyCustomers.Add(1);
             }
         }
-
-
     }
 }

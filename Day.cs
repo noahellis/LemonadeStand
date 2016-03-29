@@ -6,42 +6,5 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Day
-    {
-        public int numberOfDays = 7;
-        //Weather dailyWeather = new Weather();
-        //Customer dailyCustomer = new Customer();
-        //Store dailyStore = new Store();
-
-
-        public void StartDay()
-        {
-            //dailyWeather.StartWeather();
-            //dailyCustomer.GetNumberOfPotentialCustomers();
-            //dailyStore.StartStore();
-            //dailyCustomer.StartCustomer();
-            //dailyStore.DetermineWillBuyPrice();
-            //dailyStore.inputPrice();
-            
-            //Console.WriteLine(dailyStore.chargePrice);
-            //Console.ReadLine();
-            //generate weather
-            //report weather
-            //start store class, buy needed products
-            //subtract ingredients until out
-            //add money made to existing cash
-            //print profit margin?
-        }
-
-        public void CountDays()
-        {
-            //day one only run ask for name funciton
-           
-
-            
-            
-        }
-
-       
-    }
+    
 }
