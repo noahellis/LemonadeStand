@@ -8,23 +8,19 @@ namespace LemonadeStand
 {
     class Player
     {
-        public string Name = Console.ReadLine();
-        public double money = 20;
-        
-        public Player()
-        {
-            
-        }
+        public string name;
+
+        //public Player()
+        //{
+
+        //}
         public void GetUserInfo()
         {
             Console.WriteLine("Please enter your Name");
-            Name = Console.ReadLine();
+            name = Console.ReadLine();
         }
 
-        public void TrackInventory()
-        {
-
-        }
+       
 
        
     }

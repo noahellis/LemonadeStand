@@ -8,37 +8,38 @@ namespace LemonadeStand
 {
     class Game
     {
-        public  double chargePrice;
-        //Weather dailyWeather = new Weather();
-        Store getStoreInfo = new Store();
-
-
-
-        public void ShowProfit()
-        {
-            
-            //income - expenses 
-        }
-
+        //Weather startWeather = new Weather();
+        Customer startCustomer = new Customer();
+        Store startStore = new Store();
+        Player startPlayer = new Player();
+        Day startDay = new Day();
+        public int numberOfDays = 7;
         
 
-        //public void MakeLemonade()
-        //{
-            
-            
-        //}
-
-        public double inputPrice()
+        public void StartGame()
         {
-            Console.WriteLine("Please enter how much you would like to charge per cup for the day. \n Enter number in $.cc format");
-            chargePrice = double.Parse(Console.ReadLine());
-            if (chargePrice <= 0.009)
+            startPlayer.GetUserInfo();
+            if (startStore.ShowMoney() > 0)
             {
-                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount equal to or over $0.01");
-                inputPrice();
+                for (int dayIndex = 1; dayIndex <= numberOfDays; dayIndex++)
+                {
+                    Console.WriteLine("Day {0} of your Lemonade stand.", dayIndex);
+
+
+                    startStore.GetWeather();
+                    startStore.BuyLemons();
+                    startStore.BuyIce();
+                    startStore.BuySugar();
+                    startStore.BuyCups();
+                    startStore.inputPrice();
+                    startStore.DetermineWillBuyPrice();
+                }
+                
             }
 
-            return chargePrice;
+            //else end game
+                
+           
         }
 
     }

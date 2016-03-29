@@ -8,38 +8,31 @@ namespace LemonadeStand
 {
     class Store
     {
-        //link remaining product with inventory class
-        //public double startOfDayMoney;
-        //public double expenditure; 
-        public int lemons;
-        public int remainingLemons;
-        public int cups;
-        public int remainingCups;
-        public int sugar;
-        public int remainingSugar;
-        public int ice;
-        public int remainingIce;
         public string yesNo;
-        
-        Player playerInfo = new Player();
-        Weather getWeather = new Weather();
-        
-        //print inventory before purchasing
-        
-        public void StartStore()
+        public double chargePrice;
+        public double remainingMoney;
+      
+        Inventory inventory = new Inventory();        
+        Weather weather = new Weather();
+        public double inputPrice()
         {
-            
-            BuyLemons();
-            BuySugar();
-            BuyIce();
-            BuyCups();
+            Console.WriteLine("Please enter how much you would like to charge per cup for the day. \n Enter number in $.cc format");
+            chargePrice = double.Parse(Console.ReadLine());
+            if (chargePrice <= 0.009)
+            {
+                Console.WriteLine("You have inputted an invalid price per cup. You have to charge a positve amount equal to or over $0.01");
+                inputPrice();
+            }
+
+            return chargePrice;
         }
+
         public double BuyLemons()
         {
-            
+            Console.WriteLine("You currently have {0} Lemons.", inventory.lemons);
             Console.WriteLine("How many Lemons would you like to buy? Lemons are $0.10 each");
-            int choice = int.Parse(Console.ReadLine());            
-            if (playerInfo.money - (choice * .10)< 0)
+            int choice = int.Parse(Console.ReadLine());
+            if (inventory.money - (choice * .10) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
                 BuyLemons();
@@ -51,12 +44,11 @@ namespace LemonadeStand
                 switch (yesNo)
                 {
                     case "yes":
-                        lemons = remainingLemons + choice;
-                        playerInfo.money = playerInfo.money - (choice * .1);
+                        inventory.lemons = inventory.lemons + choice;
+                        inventory.money = inventory.money - (choice * .1);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
-
                     case "no":
                         BuyLemons();
                         break;
@@ -66,15 +58,16 @@ namespace LemonadeStand
                         break;
                 }
             }
-            return playerInfo.money;           
-            
+
+            return inventory.money;
         }
 
         public double BuyCups()
         {
+            Console.WriteLine("You currently have {0} Cups.", inventory.cups);
             Console.WriteLine("How many Cups would you like to buy? Cups are $0.05 each");
             int choice = int.Parse(Console.ReadLine());
-            if (playerInfo.money - (choice * .05) < 0)
+            if (inventory.money - (choice * .05) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
                 BuyCups();
@@ -86,12 +79,11 @@ namespace LemonadeStand
                 switch (yesNo)
                 {
                     case "yes":
-                        lemons = remainingLemons + choice;
-                        playerInfo.money = playerInfo.money - (choice * .05);
+                        inventory.cups = inventory.cups + choice;
+                        inventory.money = inventory.money - (choice * .05);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
-
                     case "no":
                         BuyCups();
                         break;
@@ -101,16 +93,16 @@ namespace LemonadeStand
                         break;
                 }
             }
-            return playerInfo.money;
 
-
+            return inventory.money;
         }
 
         public double BuyIce()
         {
+            Console.WriteLine("You currently have {0} Cups of Ice.", inventory.ice);
             Console.WriteLine("How many Cups of Ice would you like to buy? Cups of Ice are $0.05 each");
             int choice = int.Parse(Console.ReadLine());
-            if (playerInfo.money - (choice * .05) < 0)
+            if (inventory.money - (choice * .05) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
                 BuyIce();
@@ -122,12 +114,11 @@ namespace LemonadeStand
                 switch (yesNo)
                 {
                     case "yes":
-                        lemons = remainingLemons + choice;
-                        playerInfo.money = playerInfo.money - (choice * .05);
+                        inventory.ice = inventory.ice + choice;
+                        inventory.money = inventory.money - (choice * .05);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
-
                     case "no":
                         BuyIce();
                         break;
@@ -138,14 +129,15 @@ namespace LemonadeStand
                 }
             }
 
-            return playerInfo.money;
+            return inventory.money;
         }
 
         public double BuySugar()
         {
+            Console.WriteLine("You currently have {0} Servings of Sugar.", inventory.sugar);
             Console.WriteLine("How many servings of Sugar would you like to buy? Servings of Sugar are $0.02 each");
             int choice = int.Parse(Console.ReadLine());
-            if (playerInfo.money - (choice * .02) < 0)
+            if (inventory.money - (choice * .02) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
                 BuySugar();
@@ -157,12 +149,11 @@ namespace LemonadeStand
                 switch (yesNo)
                 {
                     case "yes":
-                        lemons = remainingLemons + choice;
-                        playerInfo.money = playerInfo.money - (choice * .02);
+                        inventory.sugar = inventory.sugar + choice;
+                        inventory.money = inventory.money - (choice * .02);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", playerInfo.money);
+                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
-
                     case "no":
                         BuySugar();
                         break;
@@ -173,19 +164,128 @@ namespace LemonadeStand
                 }
             }
 
-            return playerInfo.money;
+            return inventory.money;
         }
-        //public double AddExpenditures()
-        //{
-        //    expenditure = startOfDayMoney - playerInfo.money;
-        //    return expenditure;
-        //    add amount spent at store each day so that
-        //}
 
-
-        public void CheckInventory()
+        public void DetermineWillBuyPrice()
         {
-            //will check after each day, 
+            Random custBuy = new Random();
+            foreach (int buyer in weather.purchasingCustomers)
+            {
+                int priceBuy = custBuy.Next(0, 100);
+                if (chargePrice > 0 && chargePrice <= .2)
+                {
+                    weather.willBuy = true;
+                    Console.WriteLine("bought lemonade");
+                    inventory.SubtractInventory();
+                }
+
+                if (chargePrice > .2 && chargePrice <= .5)
+                {
+                    if (priceBuy < 80)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+
+                if (chargePrice > .5 && chargePrice <= .75)
+                {
+                    if (priceBuy < 70)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+
+                if (chargePrice > .75 && chargePrice <= 1)
+                {
+                    if (priceBuy < 60)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+
+                if (chargePrice > 1 && chargePrice <= 1.25)
+                {
+                    if (priceBuy < 40)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+
+                if (chargePrice > 1.25 && chargePrice <= 1.5)
+                {
+                    if (priceBuy < 30)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+
+                if (chargePrice > 1.5)
+                {
+                    if (priceBuy < 10)
+                    {
+                        weather.willBuy = true;
+                        Console.WriteLine("bought lemonade");
+                        inventory.SubtractInventory();
+                        inventory.money = inventory.money + chargePrice;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Approached stand, didn't buy");
+                    }
+                }
+            }
+        }
+
+        public double ShowMoney()
+        {
+            remainingMoney = inventory.money;
+            Console.WriteLine("You have {0:C2} remaining", remainingMoney);
+            return remainingMoney;
+           
+        }
+
+        public void GetWeather()
+        {
+            weather.DetermineWeather();
+            weather.PresentDailyWeather();
+            weather.GetNumberOfPotentialCustomers();
+            weather.DetermineWillBuyWeather();
         }
     }
 }

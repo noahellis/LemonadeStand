@@ -9,17 +9,22 @@ namespace LemonadeStand
     class Day
     {
         public int numberOfDays = 7;
-        Weather dailyWeather = new Weather();
-        Customer dailyCustomer = new Customer();
-        Store dailyStore = new Store();
+        //Weather dailyWeather = new Weather();
+        //Customer dailyCustomer = new Customer();
+        //Store dailyStore = new Store();
 
 
         public void StartDay()
         {
-            dailyWeather.DetermineWeather();
-            dailyWeather.PresentDailyWeather();
-            dailyStore.StartStore();
-            dailyCustomer.GetNumberOfPotentialCustomers();
+            //dailyWeather.StartWeather();
+            //dailyCustomer.GetNumberOfPotentialCustomers();
+            //dailyStore.StartStore();
+            //dailyCustomer.StartCustomer();
+            //dailyStore.DetermineWillBuyPrice();
+            //dailyStore.inputPrice();
+            
+            //Console.WriteLine(dailyStore.chargePrice);
+            //Console.ReadLine();
             //generate weather
             //report weather
             //start store class, buy needed products
@@ -31,12 +36,12 @@ namespace LemonadeStand
         public void CountDays()
         {
             //day one only run ask for name funciton
-            for (int dayIndex = 0; dayIndex <= numberOfDays; dayIndex++) ;
+           
+
+            
+            
         }
 
-        //public void EndDay()
-        //{
-             //if stock runs out, end automatically
-        //}
+       
     }
 }
