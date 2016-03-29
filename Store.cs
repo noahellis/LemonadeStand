@@ -13,6 +13,8 @@ namespace LemonadeStand
         public double remainingMoney;
         Inventory inventory = new Inventory();
         Weather weather = new Weather();
+        List<int> purchasedLemonade = new List<int>();
+        List<int> didNotPurchaseLemonade = new List<int>();
         public double inputPrice()
         {
             Console.WriteLine("Please enter how much you would like to charge per cup for the day. \n Enter number in $.cc format");
@@ -168,16 +170,19 @@ namespace LemonadeStand
 
         public void DetermineWillBuyPrice()
         {
+            purchasedLemonade.Clear();
+            didNotPurchaseLemonade.Clear();
             Random custBuy = new Random();
             foreach (int buyer in weather.purchasingCustomers)
             {
+                
                 int priceBuy = custBuy.Next(0, 100);
                 if (chargePrice > 0 && chargePrice <= .2)
                 {
                     if (inventory.enoughInventory == true)
                     {
                         weather.willBuy = true;
-                        Console.WriteLine("bought lemonade");
+                        purchasedLemonade.Add(1);
                         inventory.SubtractInventory();
                         inventory.money = inventory.money + chargePrice;
                     }
@@ -193,7 +198,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -202,7 +207,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
 
@@ -213,7 +218,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -222,7 +227,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
 
@@ -233,7 +238,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -242,7 +247,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
 
@@ -253,7 +258,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -262,7 +267,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
 
@@ -273,7 +278,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -282,7 +287,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
 
@@ -293,7 +298,7 @@ namespace LemonadeStand
                         if (inventory.CheckInventory())
                         {
                             weather.willBuy = true;
-                            Console.WriteLine("bought lemonade");
+                            purchasedLemonade.Add(1);
                             inventory.SubtractInventory();
                             inventory.money = inventory.money + chargePrice;
                         }
@@ -302,7 +307,7 @@ namespace LemonadeStand
                     }
                     else
                     {
-                        Console.WriteLine("Approached stand, didn't buy");
+                        didNotPurchaseLemonade.Add(1);
                     }
                 }
             }
@@ -313,6 +318,16 @@ namespace LemonadeStand
             remainingMoney = inventory.money;
             Console.WriteLine("You have {0:C2} remaining", remainingMoney);
             return remainingMoney;
+        }
+
+        public void ShowPurchased()
+        {
+            Console.WriteLine("You sold {0} Lemonades!!", purchasedLemonade.Count());
+        }
+
+        public void ShowDidNotPurchase()
+        {
+            Console.WriteLine("{0} people opted to buy Lemonade because the price was too high", didNotPurchaseLemonade.Count());
         }
 
         public void GetWeather()
