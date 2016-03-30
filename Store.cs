@@ -349,6 +349,7 @@ namespace LemonadeStand
 
         public void GetWeather()
         {
+            inventory.DisplayCashAndInventory();
             weather.DetermineWeather();
             weather.PresentDailyWeather();
             weather.GetNumberOfPotentialCustomers();

@@ -29,10 +29,16 @@ namespace LemonadeStand
             else
             {
                 enoughInventory = false;
-                Console.WriteLine("You ran out of product!! Buy more and try again tomorrow!!");
+                Console.WriteLine("You ran out of product before you could serve all your customers!! Buy more and try again tomorrow!!");
             }
             
             return enoughInventory;
+        }
+        public void DisplayCashAndInventory()
+        {
+            Console.WriteLine("Inventory: {0} Lemons, {1} Servings of Sugar, {2} Cups, {3} Cups of Ice", lemons, sugar, cups, ice);
+            Console.WriteLine("Money: {0:C2}", money);
+
         }
     }
 }

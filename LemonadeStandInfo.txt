@@ -1,0 +1,6 @@
+Day: {0}
+Money: {1:C2}
+Lemons: {2}
+Ice: {3}
+Sugar: {4}
+Cups: {5}

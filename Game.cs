@@ -12,6 +12,7 @@ namespace LemonadeStand
     {
         Store startStore = new Store();
         Player startPlayer = new Player();
+        //FileWriter startFileWriter = new FileWriter();
         public int numberOfDays = 7;
         public string choice;
         public void FlashTitle()
@@ -73,7 +74,7 @@ $$ |     $$$$$$$$ |$$ / $$ / $$ |$$ /  $$ |$$ |  $$ | $$$$$$$ |$$ /  $$ |$$$$$$$
 $$ |     $$   ____|$$ | $$ | $$ |$$ |  $$ |$$ |  $$ |$$  __$$ |$$ |  $$ |$$   ____|      $$\   $$ |  $$ |$$\ $$  __$$ |$$ |  $$ |$$ |  $$ |
 $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$$\       \$$$$$$  |  \$$$$  |\$$$$$$$ |$$ |  $$ |\$$$$$$$ |
 \________|\_______|\__| \__| \__| \______/ \__|  \__| \_______| \_______| \_______|       \______/    \____/  \_______|\__|  \__| \_______|");
-            Thread.Sleep(3000);
+            Thread.Sleep(500);
         }
         
 
@@ -97,7 +98,8 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
                     startStore.ShowPurchased();
-                    startStore.ShowDidNotPurchase();                    
+                    startStore.ShowDidNotPurchase();
+                    //startFileWriter.WriteInventory();                                      
                     Console.WriteLine("Press any key to start the next day");
                     Console.ReadKey();               
                 }
@@ -110,7 +112,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
         }
         public void EndGame ()
         {
-            Console.WriteLine("The game has ended. You ended with {0:C2}. Would you like to try again?", startStore.remainingMoney);
+            Console.WriteLine("The game has ended.  Would you like to try again?");
             choice = Console.ReadLine();
             bool correct = true;
             while (correct)

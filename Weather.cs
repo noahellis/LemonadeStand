@@ -58,7 +58,7 @@ namespace LemonadeStand
    \\//00000000\\//              ||===||
    //\\00000000//\\              ||===||
     \\//000000\\//               ||===||
-	  //\\00//\\                 ||===||
+      //\\00//\\                 ||===||
         \\==//                   ||===||
                                  ||===||
                                  ||===||
@@ -166,7 +166,7 @@ namespace LemonadeStand
         public int DetermineWillBuyWeather()
         {
             Random custApproach = new Random();
-            for (int dayCust = 0; dayCust <= potentialCustomer; dayCust++)
+            for (int dayCust = 0; dayCust <= dailyCustomers.Count; dayCust++)
             {
                 int weatherBuy = custApproach.Next(0, 100);
                 if (weatherNumber == 1)
