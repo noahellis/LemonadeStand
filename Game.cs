@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Diagnostics;
+using System.IO;
 
 namespace LemonadeStand
 {
     class Game
     {
+        public int numberOfDays = 7;    
+        public string choice;
         Store startStore = new Store();
         Player startPlayer = new Player();
-        //FileWriter startFileWriter = new FileWriter();
-        public int numberOfDays = 7;
-        public string choice;
+              
         public void FlashTitle()
         {
             Console.WriteLine(@"
@@ -83,10 +84,16 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
             FlashTitle();
             startPlayer.GetUserInfo();
             GameInfo();
+            RunGame();       
+            
+        }
 
+        public void RunGame()
+        {
             if (startStore.ShowMoney() > 0)
             {
                 for (int dayIndex = 1; dayIndex <= numberOfDays; dayIndex++)
+
                 {
                     Console.Clear();
                     Console.WriteLine("Day {0} of your Lemonade stand.", dayIndex);
@@ -95,13 +102,14 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.BuyIce();
                     startStore.BuySugar();
                     startStore.BuyCups();
+                    startStore.DisplayAmountSpent();
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
                     startStore.ShowPurchased();
                     startStore.ShowDidNotPurchase();
-                    //WriteInventory();                                     
+                    startStore.DisplayProfit();
                     Console.WriteLine("Press any key to start the next day");
-                    Console.ReadKey();               
+                    Console.ReadKey();
                 }
                 EndGame();
             }
@@ -139,11 +147,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                 }
             }
         }
-        //public void WriteInventory()
-        //{
-        //    string[] inventoryLines = { "Day: {0}", "Money: {1:C2}", "Lemons: {2}", "Ice: {3}", "Sugar: {4}", "Cups: {5}"};
-        //    System.IO.File.WriteAllLines(@"C:\Users\Noah\Documents\Visual Studio 2015\Projects\LemonadeStand\LemonadeStand\LemonadeStandInfo.txt", inventoryLines);
-        //}
+
 
         public void GameInfo()
         {
@@ -156,5 +160,14 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
             Console.ReadKey();
             Console.Clear();
         }
+
+        //public void writeText()
+        //{
+        //    using (StreamWriter writer = new StreamWriter("C:\\Users\\Noah\\Documents\\Visual Studio 2015\\Projects\\LemonadeStand\\LemonadeStand\\LemonadeStandInfo.txt"))
+        //    {
+        //        int Day =
+        //        int Lemons = startStore.
+        //    }
+        //}
     }
 }

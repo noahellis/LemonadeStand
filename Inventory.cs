@@ -29,7 +29,10 @@ namespace LemonadeStand
             else
             {
                 enoughInventory = false;
+
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("You ran out of product before you could serve all your customers!! Buy more and try again tomorrow!!");
+                Console.ForegroundColor = ConsoleColor.Green;
             }
             
             return enoughInventory;

@@ -11,7 +11,7 @@ namespace LemonadeStand
         public string name;       
         public void GetUserInfo()
         {
-            Console.WriteLine("Please enter your Name");
+            Console.WriteLine("\nPlease enter your Name");
             name = Console.ReadLine();
         }
     }
