@@ -264,7 +264,7 @@ namespace LemonadeStand
                 potentialCustomer = custNum.Next(10, 30);
             }
 
-            for (int customers = 0; customers <= potentialCustomer; customers++)
+            for (int customers = 1; customers <= potentialCustomer; customers++)
             {
                 dailyCustomers.Add(1);
             }
