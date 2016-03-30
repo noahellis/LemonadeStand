@@ -97,7 +97,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
                     startStore.ShowPurchased();
-                    startStore.ShowDidNotPurchase();
+                    startStore.ShowDidNotPurchase();                    
                     Console.WriteLine("Press any key to start the next day");
                     Console.ReadKey();               
                 }

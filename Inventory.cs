@@ -25,9 +25,13 @@ namespace LemonadeStand
         public bool CheckInventory()
         {
             if (lemons >=1 && ice >=1 && sugar >=2 && cups >=1)
-                enoughInventory = true;           
+                enoughInventory = true;
             else
+            {
                 enoughInventory = false;
+                Console.WriteLine("You ran out of product!! Buy more and try again tomorrow!!");
+            }
+            
             return enoughInventory;
         }
     }
