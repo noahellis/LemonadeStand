@@ -173,7 +173,7 @@ namespace LemonadeStand
             purchasedLemonade.Clear();
             didNotPurchaseLemonade.Clear();
             Random custBuy = new Random();
-            foreach (int buyer in weather.purchasingCustomers)
+            foreach (int buyer in weather.approachCust)
             {
                 
                 int priceBuy = custBuy.Next(0, 100);

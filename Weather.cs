@@ -14,8 +14,7 @@ namespace LemonadeStand
         public int potentialCustomer;
         public int approachingCustomers;
         public List<int> dailyCustomers = new List<int>();
-        public List<int> purchasingCustomers = new List<int>();
-        public List<bool> customersThatBought = new List<bool>();
+        public List<int> approachCust = new List<int>();        
         public int DetermineWeather()
         {
             Random weatherRand = new Random();
@@ -52,9 +51,9 @@ namespace LemonadeStand
                     Console.WriteLine("Today's weather forecast is Sunny and Warm!!");
                     Console.WriteLine(@"
 
-        \\==//                     ===
-      \\//00\\//                 //   \\
-    //\\000000//\\               ||   ||
+        \\==//                     
+      \\//00\\//                 =======
+    //\\000000//\\               ||---||
    \\//00000000\\//              ||===||
    //\\00000000//\\              ||===||
     \\//000000\\//               ||===||
@@ -74,8 +73,8 @@ namespace LemonadeStand
                     Console.WriteLine("Today's weather forecast is Sunny and Cool!!");
                     Console.WriteLine(@"
 
-        \\==//                     ===
-      \\//00\\//                 //   \\
+        \\==//                     
+      \\//00\\//                 =======
     //\\000000//\\               ||   ||
    \\//00000000\\//              ||   ||
    //\\00000000//\\              ||   ||
@@ -96,14 +95,14 @@ namespace LemonadeStand
                     Console.WriteLine("Today's weather forecast is Rainy and Cool!!");
                     Console.WriteLine(@"
 
- /   /   /   /   /   /   /         ===
-   /   /   /   /   /   /   /     //   \\
+ /   /   /   /   /   /   /         
+   /   /   /   /   /   /   /     =======
 /    /   /   /   /   /   /       ||   ||
   /    /   /   /   /   /   /     ||   ||
 /   /    /   /   /   /   /       ||   ||
   /    /   /  /  /   /  /        ||   ||
 /    /   /  / //  /   /   /      ||   ||
- /  /  /  /   /  / / /   / /     ||   ||
+ /  /  /  /   /  / / /   / /     ||---||
                                  ||===||
                                  ||===||
                                 //=====\\
@@ -118,9 +117,9 @@ namespace LemonadeStand
                     Console.WriteLine("Today's weather forecast is Rainy and Warm!!");
                     Console.WriteLine(@"
 
- /   /   /   /   /   /   /         ===
-   /   /   /   /   /   /   /     //   \\
-/    /   /   /   /   /   /       ||   ||
+ /   /   /   /   /   /   /         
+   /   /   /   /   /   /   /     =======
+/    /   /   /   /   /   /       ||---||
   /    /   /   /   /   /   /     ||===||
 /   /    /   /   /   /   /       ||===||
   /    /   /  /  /   /  /        ||===||
@@ -140,8 +139,8 @@ namespace LemonadeStand
                     Console.WriteLine("Today's weather forecast is Snowy!!");
                     Console.WriteLine(@"
 
- *  *  **   *   *   * * *  *       ===
-* *   *   *   *   **   * * *     //   \\
+ *  *  **   *   *   * * *  *       
+* *   *   *   *   **   * * *     =======
 *  * *  *   *   *   * *   *      ||   ||
   *   *   *   *    *    *  *     ||   ||
 *   *   *   *    *    *   *      ||   ||
@@ -165,8 +164,9 @@ namespace LemonadeStand
 
         public int DetermineWillBuyWeather()
         {
+            approachCust.Clear();
             Random custApproach = new Random();
-            for (int dayCust = 0; dayCust <= dailyCustomers.Count; dayCust++)
+            foreach (int buyingCust in dailyCustomers)
             {
                 int weatherBuy = custApproach.Next(0, 100);
                 if (weatherNumber == 1)
@@ -174,7 +174,7 @@ namespace LemonadeStand
                     if (weatherBuy < 90)
                     {
                         willApproach = true;
-                        purchasingCustomers.Add(1);
+                        approachCust.Add(1);
                     }
                     else
                     {
@@ -187,7 +187,7 @@ namespace LemonadeStand
                     if (weatherBuy < 70)
                     {
                         willApproach = true;
-                        purchasingCustomers.Add(1);
+                        approachCust.Add(1);
                     }
                     else
                     {
@@ -200,7 +200,7 @@ namespace LemonadeStand
                     if (weatherBuy < 50)
                     {
                         willApproach = true;
-                        purchasingCustomers.Add(1);
+                        approachCust.Add(1);
                     }
                     else
                     {
@@ -213,7 +213,7 @@ namespace LemonadeStand
                     if (weatherBuy < 60)
                     {
                         willApproach = true;
-                        purchasingCustomers.Add(1);
+                        approachCust.Add(1);
                     }
                     else
                     {
@@ -226,7 +226,7 @@ namespace LemonadeStand
                     if (weatherBuy < 10)
                     {
                         willApproach = true;
-                        purchasingCustomers.Add(1);
+                        approachCust.Add(1);
                     }
                     else
                     {
@@ -235,12 +235,13 @@ namespace LemonadeStand
                 }
             }
 
-            approachingCustomers = purchasingCustomers.Count;
+            approachingCustomers = approachCust.Count;
             return approachingCustomers;
         }
 
         public void GetNumberOfPotentialCustomers()
         {
+            dailyCustomers.Clear();
             Random custNum = new Random();
             if (weatherNumber == 1)
             {
