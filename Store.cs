@@ -363,16 +363,27 @@ namespace LemonadeStand
             return remainingMoney;
         }
 
+        public void ShowApproachingCustomers()
+        {
+            int approachingCustomers = purchasedLemonade.Count + didNotPurchaseLemonade.Count;
+            if (approachingCustomers ==1)
+            {
+                Console.WriteLine("One customer approached to buy Lemonade");
+            }
+            else
+            Console.WriteLine("{0} customers approached to buy Lemonade.", approachingCustomers);
+        }
+
         public void ShowPurchased()
         {
             if (purchasedLemonade.Count == 1)
             {
-                Console.WriteLine("You sold 1 Lemonade!!");
+                Console.WriteLine("One bought Lemonade!!");
             }
 
             else
             {
-                Console.WriteLine("You sold {0} Lemonades!!", purchasedLemonade.Count());
+                Console.WriteLine("{0} bought Lemonade!!!", purchasedLemonade.Count());
             }
             
         }

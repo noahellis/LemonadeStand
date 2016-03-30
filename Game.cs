@@ -105,6 +105,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.DisplayAmountSpent();
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
+                    startStore.ShowApproachingCustomers();
                     startStore.ShowPurchased();
                     startStore.ShowDidNotPurchase();
                     startStore.DisplayProfit();

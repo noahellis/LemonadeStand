@@ -235,7 +235,7 @@ namespace LemonadeStand
                 }
             }
 
-            approachingCustomers = approachCust.Count;
+            approachingCustomers = approachCust.Count;            
             return approachingCustomers;
         }
 
