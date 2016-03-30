@@ -12,7 +12,7 @@ namespace LemonadeStand
         public int ice;
         public int cups;
         public int sugar;
-        public double money = 20;
+        public double money = 7.00;
         public bool enoughInventory;
         public void SubtractInventory()
         {
@@ -24,7 +24,7 @@ namespace LemonadeStand
 
         public bool CheckInventory()
         {
-            if (lemons > 0 && ice > 0 && sugar > 1 && cups >0)
+            if (lemons >=1 && ice >=1 && sugar >=2 && cups >=1)
                 enoughInventory = true;           
             else
                 enoughInventory = false;

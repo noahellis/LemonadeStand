@@ -322,12 +322,29 @@ namespace LemonadeStand
 
         public void ShowPurchased()
         {
-            Console.WriteLine("You sold {0} Lemonades!!", purchasedLemonade.Count());
+            if (purchasedLemonade.Count == 1)
+            {
+                Console.WriteLine("You sold 1 Lemonade!!");
+            }
+
+            else
+            {
+                Console.WriteLine("You sold {0} Lemonades!!", purchasedLemonade.Count());
+            }
+            
         }
 
         public void ShowDidNotPurchase()
         {
-            Console.WriteLine("{0} people opted to buy Lemonade because the price was too high", didNotPurchaseLemonade.Count());
+            if (didNotPurchaseLemonade.Count == 1)
+            {
+                Console.WriteLine("One person opted not to buy Lemonade because the price was too high");
+            }
+            else
+            {
+                Console.WriteLine("{0} people opted not to buy Lemonade because the price was too high", didNotPurchaseLemonade.Count());
+            }
+            
         }
 
         public void GetWeather()

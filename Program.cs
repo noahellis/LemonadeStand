@@ -10,6 +10,9 @@ namespace LemonadeStand
     {
         static void Main(string[] args)
         {
+            Console.WindowHeight = 35;
+            Console.WindowWidth = 150;
+            Console.SetWindowPosition(0, 0);
             Game startGame = new Game();
             startGame.StartGame();
         }
