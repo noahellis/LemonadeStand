@@ -96,14 +96,16 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
 
                 {
                     Console.Clear();
-                    Console.WriteLine("Day {0} of your Lemonade stand.", dayIndex);
+                    Console.WriteLine("Day {0} of your Lemonade stand.", dayIndex);                    
                     startStore.GetWeather();
                     startStore.BuyLemons();
                     startStore.BuyIce();
-                    startStore.BuySugar();
                     startStore.BuyCups();
-                    Console.Clear();
+                    startStore.BuySugar();                    
+                    Console.Clear();                    
                     startStore.DisplayAmountSpent();
+                    startStore.DisplaySimpleWeather();
+                    startStore.DisplayInventory();
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
                     startStore.ShowApproachingCustomers();

@@ -171,6 +171,18 @@ namespace LemonadeStand
             try
             {
                 choiceSugar = int.Parse(Console.ReadLine());
+                if (choiceSugar + inventory.sugar < inventory.lemons * 2 && choiceSugar + inventory.sugar < inventory.ice *2 && choiceSugar + inventory.sugar < inventory.cups *2)
+                {
+                    Console.WriteLine("Remember you need two servings of Sugar for every cup. Would you like to try again?");
+                    string choice = Console.ReadLine();
+                    switch (choice)
+                    {
+                        case "yes":
+                            return BuySugar();
+                        case "no":
+                            break;
+                    }
+                }
             }
             catch (FormatException)
             {
@@ -182,6 +194,8 @@ namespace LemonadeStand
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
                 return BuySugar();
             }
+
+            
             else
             {
                 Console.WriteLine("Enter 'yes' if you would like to purchase {0} Servings of Sugar for {1:C2} or 'no' to try again.", choiceSugar, choiceSugar * .02);
@@ -404,9 +418,18 @@ namespace LemonadeStand
 
         public double DisplayProfit()
         {
-            profit = inventory.money - moneySpent ;
+            profit = inventory.money - 7;
             Console.WriteLine("Profit so far is {0:C2}", profit);
             return profit;
+        }
+        public void DisplayInventory()
+        {
+            Console.WriteLine("Your current Inventory is: {0} Lemons, {1} Cups of Ice, {2} Servings of Sugar, {3} Cups.", inventory.lemons, inventory.ice, inventory.sugar, inventory.cups);
+        }
+
+        public void DisplaySimpleWeather()
+        {
+            weather.PresentDailyWeatherSimple();
         }
 
         public void GetWeather()
