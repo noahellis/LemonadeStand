@@ -164,8 +164,9 @@ namespace LemonadeStand
 
         public void PresentDailyWeatherSimple()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             switch (weatherNumber)
-            {
+            {                
                 case 1:
                     Console.WriteLine("Today's weather forecast is Sunny and Warm!!");
                     break;
@@ -184,8 +185,8 @@ namespace LemonadeStand
                 default:
                     break;
             }
-        
-    }
+            Console.ForegroundColor = ConsoleColor.Green;
+        }
         public int DetermineWillBuyWeather()
         {
             approachCust.Clear();

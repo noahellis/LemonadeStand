@@ -424,7 +424,9 @@ namespace LemonadeStand
         }
         public void DisplayInventory()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Your current Inventory is: {0} Lemons, {1} Cups of Ice, {2} Servings of Sugar, {3} Cups.", inventory.lemons, inventory.ice, inventory.sugar, inventory.cups);
+            Console.ForegroundColor = ConsoleColor.Green;
         }
 
         public void DisplaySimpleWeather()
