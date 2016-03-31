@@ -39,8 +39,11 @@ namespace LemonadeStand
         }
         public void DisplayCashAndInventory()
         {
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("Inventory: {0} Lemons, {1} Servings of Sugar, {2} Cups, {3} Cups of Ice", lemons, sugar, cups, ice);
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("Money: {0:C2}", money);
+            Console.ForegroundColor = ConsoleColor.Green;
 
         }
     }

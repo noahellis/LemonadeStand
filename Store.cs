@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace LemonadeStand
 {
@@ -54,7 +55,9 @@ namespace LemonadeStand
             }
             if (inventory.money - (choiceLemons * .10) < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
                 BuyLemons();
             }
             else
@@ -67,7 +70,10 @@ namespace LemonadeStand
                         inventory.lemons = inventory.lemons + choiceLemons;
                         inventory.money = inventory.money - (choiceLemons * .1);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
+                        Thread.Sleep(200);
+                        Console.Clear();
+                        weather.PresentDailyWeatherSimple();
+                        inventory.DisplayCashAndInventory();
                         break;
                     case "no":
                         BuyLemons();
@@ -97,7 +103,10 @@ namespace LemonadeStand
             }
             if (inventory.money - (choiceCups * .05) < 0)
             {
+
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
                 return BuyCups();
             }
             else
@@ -110,7 +119,10 @@ namespace LemonadeStand
                         inventory.cups = inventory.cups + choiceCups;
                         inventory.money = inventory.money - (choiceCups * .05);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
+                        Thread.Sleep(200);
+                        Console.Clear();
+                        weather.PresentDailyWeatherSimple();
+                        inventory.DisplayCashAndInventory();
                         break;
                     case "no":
                         return BuyCups();                        
@@ -124,12 +136,26 @@ namespace LemonadeStand
         }
 
         public double BuyIce()
-        {
+        {            
             Console.WriteLine("You currently have {0} Cups of Ice.", inventory.ice);
             Console.WriteLine("How many Cups of Ice would you like to buy? Cups of Ice are $0.05 each");
             try
             {
                 choiceIce = int.Parse(Console.ReadLine());
+                if (choiceIce + inventory.ice < inventory.lemons && choiceIce + inventory.ice < inventory.sugar / 2 && choiceIce + inventory.ice < inventory.cups)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Remember your ice melts every day. Would you like to try again?");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    string choice = Console.ReadLine();
+                    switch (choice)
+                    {
+                        case "yes":
+                            return BuyIce();
+                        case "no":
+                            break;
+                    }
+                }
             }
             catch (FormatException)
             {
@@ -138,7 +164,9 @@ namespace LemonadeStand
             }
             if (inventory.money - (choiceIce * .05) < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
                 return BuyIce();
             }
             else
@@ -151,7 +179,10 @@ namespace LemonadeStand
                         inventory.ice = inventory.ice + choiceIce;
                         inventory.money = inventory.money - (choiceIce * .05);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
+                        Thread.Sleep(200);
+                        Console.Clear();
+                        weather.PresentDailyWeatherSimple();
+                        inventory.DisplayCashAndInventory();
                         break;
                     case "no":
                         return BuyIce();                        
@@ -173,7 +204,9 @@ namespace LemonadeStand
                 choiceSugar = int.Parse(Console.ReadLine());
                 if (choiceSugar + inventory.sugar < inventory.lemons * 2 && choiceSugar + inventory.sugar < inventory.ice *2 && choiceSugar + inventory.sugar < inventory.cups *2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Remember you need two servings of Sugar for every cup. Would you like to try again?");
+                    Console.ForegroundColor = ConsoleColor.Green;
                     string choice = Console.ReadLine();
                     switch (choice)
                     {
@@ -191,7 +224,9 @@ namespace LemonadeStand
             }
             if (inventory.money - (choiceSugar * .02) < 0)
             {
+                Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
+                Console.ForegroundColor = ConsoleColor.Green;
                 return BuySugar();
             }
 
@@ -206,7 +241,10 @@ namespace LemonadeStand
                         inventory.sugar = inventory.sugar + choiceSugar;
                         inventory.money = inventory.money - (choiceSugar * .02);
                         Console.WriteLine("Purchase completed!");
-                        Console.WriteLine("You have {0:C2} remaining.", inventory.money);
+                        Thread.Sleep(200);
+                        Console.Clear();
+                        weather.PresentDailyWeatherSimple();
+                        inventory.DisplayCashAndInventory();
                         break;
                     case "no":
                         return BuySugar();                        
@@ -411,15 +449,19 @@ namespace LemonadeStand
 
         public double DisplayAmountSpent()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             moneySpent = ((choiceCups * .05) + (choiceIce * .05) + (choiceLemons * .1) + (choiceSugar * .02));
             Console.WriteLine("You spent {0:C2} dollars on inventory.", moneySpent);
+            Console.ForegroundColor = ConsoleColor.Green;
             return moneySpent;
         }
 
         public double DisplayProfit()
         {
+            Console.ForegroundColor = ConsoleColor.Magenta;
             profit = inventory.money - 7;
             Console.WriteLine("Profit so far is {0:C2}", profit);
+            Console.ForegroundColor = ConsoleColor.Green;
             return profit;
         }
         public void DisplayInventory()
@@ -433,7 +475,10 @@ namespace LemonadeStand
         {
             weather.PresentDailyWeatherSimple();
         }
-
+        public void MeltIce()
+        {
+            inventory.ice = 0;
+        }
         public void GetWeather()
         {
             inventory.DisplayCashAndInventory();

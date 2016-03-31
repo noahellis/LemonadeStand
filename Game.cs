@@ -114,6 +114,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.ShowPurchased();
                     startStore.ShowDidNotPurchase();
                     startStore.DisplayProfit();
+                    startStore.MeltIce();
                     Console.WriteLine("Press any key to start the next day");
                     Console.ReadKey();
                 }
@@ -157,9 +158,12 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
 
         public void GameInfo()
         {
-            Console.WriteLine("Hello {0}!!", startPlayer.name);
+            Console.WriteLine("\n \nHello {0}!!", startPlayer.name);
             Console.WriteLine("Welcome to my Lemonade Stand!!!");
-            Console.WriteLine("This game takes place across seven days.  Each glass of Lemonade needs a Cup, a Cup of Ice, two Servings of Sugar, and a Lemon.");
+            Console.WriteLine("This game takes place across seven days.  Each glass of Lemonade needs a Cup, a Cup of Ice, two Servings of Sugar, and a Lemon.");           
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Your Ice melts at the end of every day, so be sure to stock up!");
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Make sure you have enough ingredients to get through each day, or the day will end early!");
             Console.WriteLine("You start the game with $7.00.");
             Console.WriteLine("Press any key to start the game!!!");
