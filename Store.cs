@@ -50,7 +50,7 @@ namespace LemonadeStand
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a positive whole number, or zero");
-                BuyLemons();
+                return BuyLemons();
             }
             if (inventory.money - (choiceLemons * .10) < 0)
             {
@@ -93,12 +93,12 @@ namespace LemonadeStand
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a positive whole number, or zero");
-                BuyCups();
+                return BuyCups();
             }
             if (inventory.money - (choiceCups * .05) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
-                BuyCups();
+                return BuyCups();
             }
             else
             {
@@ -113,12 +113,10 @@ namespace LemonadeStand
                         Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
                     case "no":
-                        BuyCups();
-                        break;
+                        return BuyCups();                        
                     default:
                         Console.WriteLine("Your entry is invalid. Please try again");
-                        BuyCups();
-                        break;
+                        return BuyCups();                        
                 }
             }
 
@@ -136,12 +134,12 @@ namespace LemonadeStand
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a positive whole number, or zero");
-                BuyIce();
+                return BuyIce();
             }
             if (inventory.money - (choiceIce * .05) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
-                BuyIce();
+                return BuyIce();
             }
             else
             {
@@ -156,12 +154,10 @@ namespace LemonadeStand
                         Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
                     case "no":
-                        BuyIce();
-                        break;
+                        return BuyIce();                        
                     default:
                         Console.WriteLine("Your entry is invalid. Please try again");
-                        BuyIce();
-                        break;
+                        return BuyIce();                        
                 }
             }
 
@@ -179,12 +175,12 @@ namespace LemonadeStand
             catch (FormatException)
             {
                 Console.WriteLine("Please enter a positive whole number, or zero");
-                BuySugar();
+                return BuySugar();
             }
             if (inventory.money - (choiceSugar * .02) < 0)
             {
                 Console.WriteLine("Sorry you do not have enough money to make that purchase. Please try again.");
-                BuySugar();
+                return BuySugar();
             }
             else
             {
@@ -199,12 +195,10 @@ namespace LemonadeStand
                         Console.WriteLine("You have {0:C2} remaining.", inventory.money);
                         break;
                     case "no":
-                        BuySugar();
-                        break;
+                        return BuySugar();                        
                     default:
                         Console.WriteLine("Your entry is invalid. Please try again");
-                        BuySugar();
-                        break;
+                        return BuySugar();                        
                 }
             }
 
@@ -411,7 +405,7 @@ namespace LemonadeStand
         public double DisplayProfit()
         {
             profit = inventory.money - moneySpent ;
-            Console.WriteLine("Profit for today is {0:C2}", profit);
+            Console.WriteLine("Profit so far is {0:C2}", profit);
             return profit;
         }
 

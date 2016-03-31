@@ -102,6 +102,7 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
                     startStore.BuyIce();
                     startStore.BuySugar();
                     startStore.BuyCups();
+                    Console.Clear();
                     startStore.DisplayAmountSpent();
                     startStore.inputPrice();
                     startStore.DetermineWillBuyPrice();
@@ -161,14 +162,6 @@ $$$$$$$$\\$$$$$$$\ $$ | $$ | $$ |\$$$$$$  |$$ |  $$ |\$$$$$$$ |\$$$$$$$ |\$$$$$$
             Console.ReadKey();
             Console.Clear();
         }
-
-        //public void writeText()
-        //{
-        //    using (StreamWriter writer = new StreamWriter("C:\\Users\\Noah\\Documents\\Visual Studio 2015\\Projects\\LemonadeStand\\LemonadeStand\\LemonadeStandInfo.txt"))
-        //    {
-        //        int Day =
-        //        int Lemons = startStore.
-        //    }
-        //}
+       
     }
 }
